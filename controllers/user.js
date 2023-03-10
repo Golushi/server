@@ -44,10 +44,8 @@ exports.signup = (req, res) => {
         data,
         (error, results) => {
           if (error) {
-            console.log(error);
             res.json({ error });
           } else {
-            console.log(results);
             res.json({ message: "Utilisateur enregisté" });
           }
         }
@@ -58,51 +56,35 @@ exports.signup = (req, res) => {
 
 // Login
 exports.login = (req, res, next) => {
+  const { nom, email, password, couverts } = req.body;
+  // Instance classe User
+  const user = new User(nom, email, password, couverts);
   // Chiffrer l'email
-  const emailCryptoJs = cryptojs
-    .HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`)
-    .toString();
-
-  const email = emailCryptoJs;
-
+  const emailChiffre = user.emailChiffrement();
   // Chercher dans la bdd
   mysqlconnection.query(
     "SELECT * FROM user WHERE email = ?",
-    email,
+    emailChiffre,
     (error, results) => {
       if (error) {
-        console.log(error);
         res.json({ error });
       } else {
-        console.log("------------------------->");
-        console.log(results);
-
         if (results == 0) {
           return res.status(404).json({ error: "utilisateur inexistant" });
         }
-
         // Validité password
         bcrypt
           .compare(req.body.password, results[0].password)
           .then((controlPassword) => {
-            console.log(controlPassword);
-
             if (!controlPassword) {
               return res.status(401).json({ error: "mot de passe incorrect" });
             }
-
-            console.log("----------->");
-            console.log(results[0].password);
-            console.log(results[0].id);
-
             // Generer Token
             const token = jwt.sign(
               { userId: results[0].id },
               `${process.env.JWT_KEY_TOKEN}`,
               { expiresIn: "12h" }
             );
-            console.log(token);
-
             // Res server userId et token
             res.status(201).json({
               userId: results[0].id,

@@ -8,9 +8,6 @@ const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 const result = dotenv.config();
 
-// Modele bdd signup
-const users = [];
-
 class User {
   constructor(nom, email, password, couverts) {
     this.nom = nom;
@@ -36,18 +33,6 @@ class User {
       console.log(err);
     }
   };
-
-  static findByEmail(email) {
-    return users.find((user) => user.email === email);
-  }
-
-  save() {
-    users.push(this);
-  }
-
-  static verifyPassword(user, password) {
-    return user.password === password;
-  }
 
   static isValide(couverts) {
     return couverts >= 1 && couverts <= 20;
