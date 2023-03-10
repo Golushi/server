@@ -8,7 +8,7 @@ console.log(mysql);
 
 // Param connexion bdd
 const mysqlconnection = mysql.createConnection({
-  hoste: "localhost",
+  host: "localhost",
   database: "quai_antique",
   user: "root",
   password: "",

@@ -7,13 +7,37 @@ const morgan = require("morgan");
 // Import connection bdd mysql
 const mysql = require("./db/db.mysql");
 
+// Import routes
+const userRoutes = require("./routes/user");
+
 // Creer app express
 const app = express();
+
+// Import body-parser
+const bodyParser = require("body-parser");
 
 // logger req,res
 app.use(morgan("dev"));
 
 // Gestion CORS
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "Origin, X-requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
+// Transform corps en json
+app.use(bodyParser.json());
+
+// Route d'auth
+app.use("/api/authentification", userRoutes);
 
 // Route generale
 
