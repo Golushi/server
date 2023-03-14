@@ -15,7 +15,7 @@ const ficheUserRoutes = require("./routes/ficheUser");
 const app = express();
 
 // Import body-parser
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 // logger req,res
 app.use(morgan("dev"));
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 });
 
 // Transform corps en json
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Route d'auth
 app.use("/api/authentification", userRoutes);

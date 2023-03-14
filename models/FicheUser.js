@@ -19,6 +19,7 @@ class fiche_user {
     this.autre = autre;
   }
 }
-
+console.log("------------ this.userId");
+console.log(this.userId);
 // Export module
 module.exports = fiche_user;
