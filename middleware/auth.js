@@ -25,6 +25,8 @@ module.exports = (req, res, next) => {
     const userIdDecodedToken = decodedToken.userId;
     console.log("--------> userId decoded TOKEN");
     console.log(userIdDecodedToken);
+    console.log("---------------++++++++++++++++++");
+    console.log(req.body.userId);
 
     console.log("--------> userId dans request");
     console.log(req.body.fiche_user.userId);

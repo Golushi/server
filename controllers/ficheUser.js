@@ -30,11 +30,8 @@ exports.createFicheUser = async (req, res) => {
     lait,
     autre
   );
-  /**  INSERT INTO `fiche_user`(`fiche_user_userId`, `fiche_user_nom`, `fiche_user_couverts`, `fiche_user_fruitsCoques`, `fiche_user_arachide`, `fiche_user_oeuf`, `fiche_user_lait`, `fiche_user_autre`)
-   *  VALUES ('35','test7','5','0','1','0','1', NULL)   */
+
   try {
-    // const querySql = `INSERT INTO 'fiche_user'(fiche_user_userId, fiche_user_nom, fiche_user_couverts, fiche_user_fruitsCoques, fiche_user_arachide, fiche_user_oeuf, fiche_user_lait, fiche_user_autre)
-    //     VALUES ('35','test7','5','0','1','0','1', NULL) `;
     const querySql = `INSERT INTO fiche_user (fiche_user_userId, fiche_user_nom, fiche_user_couverts, fiche_user_fruitsCoques, fiche_user_arachide, fiche_user_oeuf, fiche_user_lait, fiche_user_autre) 
         VALUES (?)`;
 
@@ -85,7 +82,7 @@ exports.readAllFicheUser = async (req, res) => {
 exports.readOneFicheUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
+    const querySql = "SELECT * FROM `fiche_user` WHERE `id_fiche_user`= ?";
 
     const ficheUser = await mysqlconnection.query(
       querySql,
