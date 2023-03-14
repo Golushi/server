@@ -92,3 +92,25 @@ Rajouter votre id de id_fiche_user dans l'adresse pour selectionner la modif
 
 Route PUT test modifier un objet avec l'id :
 http://localhost:4000/api/fiche_user/:id
+
+TEST Postman :
+adresse ex: http://localhost:4000/api/fiche_user/19?userId=39
+Mettre en PUT,
+Mettre le token dans authorization,
+Dans params, mettre une key userId, et sa valeur dans value ( 39)
+Entrer le code suivant dans body, raw JSON :
+
+{
+"fiche_user":{
+"userId": "39",
+"nom": "test9",
+"couverts": 5,
+"fruitsCoques": 0,
+"arachide": 1,
+"oeuf": 0,
+"lait": 1,
+"autre": null
+}
+}
+
+Route DELETE test :
