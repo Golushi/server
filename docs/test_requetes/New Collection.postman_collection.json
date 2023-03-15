@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "cad7067d-f840-4a6b-901e-b772267034ff",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"nom\" : \"test9\",\r\n    \"email\" : \"test9@test.com\",\r\n    \"password\" : \"testpassworD09\",\r\n    \"couverts\" : \"6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/authentification/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"authentification",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"email\" : \"test9@test.com\",\r\n    \"password\" : \"testpassworD09\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/authentification/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"authentification",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creation_fiche_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg3OTEzNDQsImV4cCI6MTY3ODgzNDU0NH0.Yfm6rX-8STiHqtT6ahDM6ZjWCdTD0-0asvStkJGHsCE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"fiche_user\":{\r\n        \"userId\": \"39\",\r\n        \"nom\": \"test9\",\r\n        \"couverts\": 12,\r\n        \"fruitsCoques\": 0,\r\n        \"arachide\": 1,\r\n        \"oeuf\": 0,\r\n        \"lait\": 1,\r\n        \"autre\": null\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creation_fiche_user_readall",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg3OTEzNDQsImV4cCI6MTY3ODgzNDU0NH0.Yfm6rX-8STiHqtT6ahDM6ZjWCdTD0-0asvStkJGHsCE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"fiche_user\":{\r\n    \r\n        \"userId\": \"39\"\r\n        \r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						""
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "35",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creation_fiche_user_readone",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg3OTEzNDQsImV4cCI6MTY3ODgzNDU0NH0.Yfm6rX-8STiHqtT6ahDM6ZjWCdTD0-0asvStkJGHsCE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"fiche_user\":{\r\n    \r\n        \"userId\": \"39\"\r\n        \r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/19",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						"19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fiche_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg4MTExMjAsImV4cCI6MTY3ODg1NDMyMH0.okXGrWLjSSaEDo9XQSzJ0ficlbEloPOsdD4Ij1AaNAM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"fiche_user\":{\r\n        \"userId\": \"39\",\r\n        \"nom\": \"test9\",\r\n        \"couverts\": 5,\r\n        \"fruitsCoques\": 0,\r\n        \"arachide\": 1,\r\n        \"oeuf\": 0,\r\n        \"lait\": 1,\r\n        \"autre\": null\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/19?userId=39",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						"19"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "39"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg4MTExMjAsImV4cCI6MTY3ODg1NDMyMH0.okXGrWLjSSaEDo9XQSzJ0ficlbEloPOsdD4Ij1AaNAM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/19?userId=39",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						"19"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "39"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -113,4 +113,11 @@ Entrer le code suivant dans body, raw JSON :
 }
 }
 
-Route DELETE test :
+---
+
+Route DELETE test Supprimer un objet avec l'id:
+http://localhost:4000/api/fiche_user/:id
+
+TEST Postman:
+Duppliquer le test PUT.
+Le mettre en DEL
