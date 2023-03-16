@@ -11,7 +11,7 @@ const {
 } = require("../controllers/ficheUser");
 
 // Import middleware auth
-const auth = require("../middleware/auth");
+const auth = require("../middleware/authentification");
 
 // const router = express.Router();
 const router = express.Router();
