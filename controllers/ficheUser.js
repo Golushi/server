@@ -63,7 +63,7 @@ exports.createFicheUser = async (req, res) => {
 
 exports.readAllFicheUser = async (req, res) => {
   try {
-    const ficheUser = await mysqlconnection.query(
+    mysqlconnection.query(
       "SELECT * FROM `fiche_user` WHERE ?",
       ["1"],
       (error, results) => {
@@ -80,21 +80,19 @@ exports.readAllFicheUser = async (req, res) => {
 };
 
 exports.readOneFicheUser = async (req, res) => {
+  console.log("Recup id!!!!!!!!");
+  console.log(req.originalUrl.split("=")[1]);
   try {
-    const id = req.params.id;
-    const querySql = "SELECT * FROM `fiche_user` WHERE `id_fiche_user`= ?";
+    const id = req.originalUrl.split("=")[1];
+    const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
 
-    const ficheUser = await mysqlconnection.query(
-      querySql,
-      [id],
-      (error, results) => {
-        if (error) {
-          res.json({ error });
-        } else {
-          res.status(200).json({ results });
-        }
+    mysqlconnection.query(querySql, [id], (error, results) => {
+      if (error) {
+        res.json({ error });
+      } else {
+        res.status(200).json({ results });
       }
-    );
+    });
   } catch (error) {
     res.status(500).json({ error });
   }

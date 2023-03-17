@@ -6,8 +6,8 @@ const dotenv = require("dotenv");
 module.exports = (req, res, next) => {
   try {
     // Recuperer token
-    console.log("---------> middleware d'authentification");
-    console.log(req.headers.authorization);
+    // console.log("---------> middleware d'authentification");
+    // console.log(req.headers.authorization);
 
     const token = req.headers.authorization.split(" ")[1];
     console.log("--------------------> token");
@@ -28,12 +28,13 @@ module.exports = (req, res, next) => {
     console.log("---------------++++++++++++++++++");
     console.log(req.body.userId);
 
+    userIdParamsUrl = req.originalUrl.split("=")[1];
     console.log("--------> userId dans request");
-    console.log(req.body.fiche_user.userId);
+    console.log(userIdParamsUrl);
 
     // Comparer
 
-    if (req.body.fiche_user.userId == userIdDecodedToken) {
+    if (userIdParamsUrl == userIdDecodedToken) {
       next();
     } else {
       throw "Erreur identification";

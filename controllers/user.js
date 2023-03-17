@@ -39,23 +39,19 @@ exports.signup = (req, res) => {
         couverts: couverts,
       };
       // Requete SQL
-      mysqlconnection.query(
-        "INSERT INTO user SET ?",
-        data,
-        (error, results) => {
-          if (error) {
-            res.json({ error });
-          } else {
-            res.json({ message: "Utilisateur enregisté" });
-          }
+      mysqlconnection.query("INSERT INTO user SET ?", data, (error) => {
+        if (error) {
+          res.json({ error });
+        } else {
+          res.json({ message: "Utilisateur enregisté" });
         }
-      );
+      });
     })
     .catch((error) => res.status(500).json({ error }).send(console.log(error)));
 };
 
 // Login
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   const { nom, email, password, couverts } = req.body;
   // Instance classe User
   const user = new User(nom, email, password, couverts);

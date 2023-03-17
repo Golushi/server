@@ -21,7 +21,7 @@ router.post("/", auth, createFicheUser);
 
 router.get("/", auth, readAllFicheUser);
 
-router.get("/:id", auth, readOneFicheUser);
+router.get("/fiche/", auth, readOneFicheUser);
 
 router.put("/:id", auth, updateOneFicheUser);
 

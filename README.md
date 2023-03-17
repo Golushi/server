@@ -63,30 +63,22 @@ Mettre ce code dans le body en raw JSON en changeant votre id et votre nom
 ---
 
 Route GET test afficher tous les objets fiche user :
-http://localhost:4000/api/fiche_user/
+http://localhost:4000/api/fiche_user/?userId=39
 
 TEST Postman :
 Recuperer le Token obtenu precedement et l'userId.
-Créer une requete Get avec l'adresse ci dessus.
+Créer une requete Get avec l'adresse ci dessus en creant le params userId avec la valeur de votre id.
 Dans authorization, mettre le type Bearer Token, puis coller le token recuperer precedement
-Puis dans body en raw format JSON, coller en remplacant votre Id :
-
-{
-"fiche_user":{
-
-        "userId": "37"
-
-}
-}
+Puis dans body , mettre none
 
 ---
 
 Route GET test afficher un objet avec l'id :
-http://localhost:4000/api/fiche_user/:id
+http://localhost:4000/api/fiche_user/fiche/?userId=37
 
 TEST Postman :
 Duppliquez la requete precedente.
-Rajouter votre id de id_fiche_user dans l'adresse pour selectionner la modif
+Rajouter le /fiche/ dans l'adresse
 
 ---
 

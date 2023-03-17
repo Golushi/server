@@ -14,6 +14,6 @@ INSERT INTO plats (nom, description, prix) VALUES
   ('Tartiflette aux cèpes', 'Pommes de terre, crème, reblochon, cèpes, accompagnée de salade verte', 21.50),
   ('Croziflette lardons', 'Pommes de terre, crème, reblochon, cèpes, accompagnée de salade verte', 18.50),
   ('Gratiné au brezain', 'Crêpes de sarrasin, pommes de terre, crème, oignons, viande de grison, raclette fumée, accompagné de salade verte', 20.50),
-  ('Diots au vin blanc*', 'Saucisses de Savoie fumées cuites au vin blanc', 20.50);
-  ('Escalope savoyarde*', 'Filet de poulet, jambon cru de Savoie, oignons, crème, reblochon', 20.50);
+  ('Diots au vin blanc*', 'Saucisses de Savoie fumées cuites au vin blanc', 20.50),
+  ('Escalope savoyarde*', 'Filet de poulet, jambon cru de Savoie, oignons, crème, reblochon', 20.50)
   
