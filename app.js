@@ -14,9 +14,6 @@ const ficheUserRoutes = require("./routes/ficheUser");
 // Creer app express
 const app = express();
 
-// Import body-parser
-//const bodyParser = require("body-parser");
-
 // logger req,res
 app.use(morgan("dev"));
 
