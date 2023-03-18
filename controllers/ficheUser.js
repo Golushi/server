@@ -130,8 +130,8 @@ exports.updateOneFicheUser = async (req, res) => {
             console.log("-------------->reqbody");
             console.log(req.body);
 
-            console.log("-------------->reqbody.ficheUser");
-            console.log(req.body.fiche_user);
+            // console.log("-------------->reqbody.ficheUser");
+            // console.log(req.body.fiche_user);
 
             // Requete SQL :
             //UPDATE `fiche_user` SET `fiche_user_nom`='test9',`fiche_user_couverts`='3',`fiche_user_fruitsCoques`='0',`fiche_user_arachide`='1',`fiche_user_oeuf`='1',`fiche_user_lait`='1',`fiche_user_autre`= null WHERE `id_fiche_user`= 19
@@ -145,7 +145,8 @@ exports.updateOneFicheUser = async (req, res) => {
               oeuf,
               lait,
               autre,
-            } = req.body.fiche_user;
+            } = req.body;
+            // } = req.body.fiche_user;
             console.log("***************************");
             console.log(
               userId,
