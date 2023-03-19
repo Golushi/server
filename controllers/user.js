@@ -16,6 +16,7 @@ const mysqlconnection = require("../db/db.mysql");
 
 // Import models bdd user
 const User = require("../models/User");
+const fiche_user = require("../models/FicheUser");
 
 // Signup pour enregistrer nouvel user
 exports.signup = (req, res) => {
@@ -44,6 +45,64 @@ exports.signup = (req, res) => {
           res.json({ error });
         } else {
           res.json({ message: "Utilisateur enregisté" });
+
+          exports.createFicheUser = (req, res) => {
+            const userFicheObject = req.body.fiche_user;
+
+            console.log("--------> userFicheObject");
+            console.log(userFicheObject);
+
+            const {
+              userId,
+              nom,
+              couverts,
+              fruitsCoques,
+              arachide,
+              oeuf,
+              lait,
+              autre,
+            } = userFicheObject;
+
+            const ficheUser = new fiche_user(
+              userId,
+              nom,
+              couverts,
+              fruitsCoques,
+              arachide,
+              oeuf,
+              lait,
+              autre
+            );
+
+            try {
+              const querySql = `INSERT INTO fiche_user (fiche_user_userId, fiche_user_nom, fiche_user_couverts, fiche_user_fruitsCoques, fiche_user_arachide, fiche_user_oeuf, fiche_user_lait, fiche_user_autre) 
+        VALUES (?)`;
+
+              const values = [
+                userId,
+                nom,
+                couverts,
+                fruitsCoques,
+                arachide,
+                oeuf,
+                lait,
+                autre,
+              ];
+              const ficheUser = mysqlconnection.query(
+                querySql,
+                [values],
+                (error, results) => {
+                  if (error) {
+                    res.json({ error });
+                  } else {
+                    res.status(200).json({ results });
+                  }
+                }
+              );
+            } catch (err) {
+              res.status(500).json({ error: err });
+            }
+          };
         }
       });
     })
