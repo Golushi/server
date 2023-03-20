@@ -10,6 +10,7 @@ const mysql = require("./db/db.mysql");
 // Import routes
 const userRoutes = require("./routes/user");
 const ficheUserRoutes = require("./routes/ficheUser");
+const bookingRoutes = require("./routes/booking");
 
 // Creer app express
 const app = express();
@@ -39,6 +40,9 @@ app.use("/api/authentification", userRoutes);
 
 // Route fiche user
 app.use("/api/fiche_user", ficheUserRoutes);
+
+// Route booking
+app.use("/api/booking", bookingRoutes);
 
 // Route generale
 

@@ -1,23 +1,29 @@
-// import mongoose from "mongoose";
-// const { Schema } = mongoose;
+class booking {
+  constructor(
+    nom,
+    couverts,
+    dateReservation,
+    heureReservation,
+    fruitsCoques,
+    arachide,
+    oeuf,
+    lait,
+    autre
+  ) {
+    this.nom = nom;
+    this.couverts = couverts;
+    this.dateReservation = dateReservation;
+    this.heureReservation = heureReservation;
+    this.fruitsCoques = fruitsCoques;
+    this.arachide = arachide;
+    this.oeuf = oeuf;
+    this.lait = lait;
+    this.autre = autre;
+  }
+  static isValide(couverts) {
+    return couverts >= 1 && couverts <= 20;
+  }
+}
 
-// const BookingSchema = new mongoose.Schema({
-//   covers: {
-//     type: String,
-//     required: true,
-//   },
-//   date: {
-//     type: String,
-//     required: true,
-//   },
-//   time: {
-//     type: String,
-//     required: true,
-//   },
-//   allergies: {
-//     type: String,
-//     required: true,
-//   },
-// });
-
-// export default mongoose.model("Booking", BookingSchema);
+// Export module
+module.exports = booking;

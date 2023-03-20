@@ -7,18 +7,17 @@ console.log(fiche_user);
 const mysqlconnection = require("../db/db.mysql");
 
 exports.createFicheUser = async (req, res) => {
-  console.log(req.body);
-  console.log(req.body.fiche_user);
-  console.log(req.file);
+  // console.log(req.body);
+  // console.log(req.body.fiche_user);
+  // console.log(req.file);
 
   const userFicheObject = req.body.fiche_user;
 
-  console.log("--------> userFicheObject");
-  console.log(userFicheObject);
+  // console.log("--------> userFicheObject");
+  // console.log(userFicheObject);
 
   const { userId, nom, couverts, fruitsCoques, arachide, oeuf, lait, autre } =
     userFicheObject;
-  //   console.log(userId);
 
   const ficheUser = new fiche_user(
     userId,
@@ -80,8 +79,8 @@ exports.readAllFicheUser = async (req, res) => {
 };
 
 exports.readOneFicheUser = async (req, res) => {
-  console.log("Recup id!!!!!!!!");
-  console.log(req.originalUrl.split("=")[1]);
+  // console.log("Recup id!!!!!!!!");
+  // console.log(req.originalUrl.split("=")[1]);
   try {
     const id = req.originalUrl.split("=")[1];
     const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
@@ -99,8 +98,8 @@ exports.readOneFicheUser = async (req, res) => {
 };
 
 exports.updateOneFicheUser = async (req, res) => {
-  console.log("----------------> Route PUT");
-  console.log(req.params.id);
+  // console.log("----------------> Route PUT");
+  // console.log(req.params.id);
 
   // Chercher objet dans table ficheUser
   try {
@@ -120,15 +119,15 @@ exports.updateOneFicheUser = async (req, res) => {
 
           // controle autorisation modif par userId
           userIdParamsUrl = req.originalUrl.split("=")[1];
-          console.log("---------> fiche_user_userId");
-          console.log(userIdParamsUrl);
-          console.log(results[0].fiche_user_userId);
+          // console.log("---------> fiche_user_userId");
+          // console.log(userIdParamsUrl);
+          // console.log(results[0].fiche_user_userId);
 
           if (userIdParamsUrl == results[0].fiche_user_userId) {
             console.log("ça marche");
 
-            console.log("-------------->reqbody");
-            console.log(req.body);
+            // console.log("-------------->reqbody");
+            // console.log(req.body);
 
             // console.log("-------------->reqbody.ficheUser");
             // console.log(req.body.fiche_user);
@@ -181,10 +180,10 @@ exports.updateOneFicheUser = async (req, res) => {
               autre,
               id,
             ];
-            console.log(
-              "vvvvvvvvvvvvvvaaaaaaaaaaaaaaaaaaaaaalllllllllllllllllluuuuuuuuuuueeeeeeeesssssssss"
-            );
-            console.log(values);
+            // console.log(
+            //   "vvvvvvvvvvvvvvaaaaaaaaaaaaaaaaaaaaaalllllllllllllllllluuuuuuuuuuueeeeeeeesssssssss"
+            // );
+            // console.log(values);
 
             mysqlconnection.query(querySql, values, (error, results) => {
               if (error) {
@@ -211,8 +210,8 @@ exports.deleteOneFicheUser = async (req, res) => {
   try {
     // Chercher l'id de l'objet a delete
     const id = req.params.id;
-    console.log("---------id_delete");
-    console.log(id);
+    // console.log("---------id_delete");
+    // console.log(id);
 
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
@@ -220,8 +219,8 @@ exports.deleteOneFicheUser = async (req, res) => {
       if (error) {
         res.json({ error });
       } else {
-        console.log("--------------------> Selection objet a delete");
-        console.log(results);
+        // console.log("--------------------> Selection objet a delete");
+        // console.log(results);
 
         // Controle existence de la donnée pour eviter le crash
         if (results != 0) {
