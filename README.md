@@ -11,7 +11,8 @@ Configuration de la base de données
 
     Lancez XAMPP et démarrez le module Apache et MySQL
     Dans le navigateur, accédez à http://localhost/phpmyadmin/ pour accéder à l'interface de gestion de votre base de données MySQL
-    Créez une base de données en utilisant l'interface de gestion et importez les fichiers sql dans votre base de données
+    Créez une base de données en utilisant l'interface de gestion et importez les fichiers sql dans votre base de données.
+    J'ai ajouter dans le dossier doc, l'export entier pour faciliter l'import et les problemes de chemins.
     Dans le fichier config.js, modifiez les informations de connexion à votre base de données en utilisant les informations de connexion à votre base de données MySQL XAMPP
 
 Utilisation
@@ -27,6 +28,11 @@ Technologies utilisées
     Postman (pour tester les requêtes)
 
 # Routes
+
+---
+
+Pour tester les requetes POST / GET / PUT / DEL
+j'ai ajouter dans le dossier docs le fichier de ma collection des requetes Postman pour pouvoir l'importer et tester + facilement
 
 ---
 
