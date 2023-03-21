@@ -4,7 +4,7 @@ Mettre info pr variables d'environnement dans le .env
 
 Installation
 
-    Clonez le projet depuis GitHub : git clone https://github.com/votre-nom-de-projet
+    Clonez le projet depuis GitHub : git clone https://github.com/Golushi/server
     Installez les dépendances : npm install
 
 Configuration de la base de données
