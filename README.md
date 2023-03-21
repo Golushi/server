@@ -1,9 +1,30 @@
 # Backend
 
-Mettre info pr variables d'environnement
+Mettre info pr variables d'environnement dans le .env
 
-npm install
-npm start
+Installation
+
+    Clonez le projet depuis GitHub : git clone https://github.com/votre-nom-de-projet
+    Installez les dépendances : npm install
+
+Configuration de la base de données
+
+    Lancez XAMPP et démarrez le module Apache et MySQL
+    Dans le navigateur, accédez à http://localhost/phpmyadmin/ pour accéder à l'interface de gestion de votre base de données MySQL
+    Créez une base de données en utilisant l'interface de gestion et importez les fichiers sql dans votre base de données
+    Dans le fichier config.js, modifiez les informations de connexion à votre base de données en utilisant les informations de connexion à votre base de données MySQL XAMPP
+
+Utilisation
+
+    Lancez le serveur de développement : npm start
+    Ouvrez votre navigateur et accédez à l'URL suivante : http://localhost:4000
+
+Technologies utilisées
+
+    Node.js
+    Express
+    MySQL
+    Postman (pour tester les requêtes)
 
 # Routes
 
