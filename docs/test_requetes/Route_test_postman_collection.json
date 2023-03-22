@@ -106,10 +106,7 @@
 			"response": []
 		},
 		{
-			"name": "creation_fiche_user_readall",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "booking",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -121,11 +118,11 @@
 						}
 					]
 				},
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"fiche_user\":{\r\n    \r\n        \"userId\": \"39\"\r\n        \r\n}\r\n}",
+					"raw": " {\r\n     \"fiche_user\":{\r\n        \"userId\": \"39\",\r\n        \"nom\": \"test9\",\r\n        \"couverts\": 12,\r\n        \"fruitsCoques\": 0,\r\n        \"arachide\": 1,\r\n        \"oeuf\": 0,\r\n        \"lait\": 1,\r\n        \"autre\": null\r\n  }\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,47 +140,28 @@
 						"api",
 						"fiche_user",
 						""
-					],
-					"query": [
-						{
-							"key": "userId",
-							"value": "35",
-							"disabled": true
-						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "creation_fiche_user_readone",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "creation_fiche_user_readall",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2Nzg3OTEzNDQsImV4cCI6MTY3ODgzNDU0NH0.Yfm6rX-8STiHqtT6ahDM6ZjWCdTD0-0asvStkJGHsCE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM5LCJpYXQiOjE2NzkwNTEzODksImV4cCI6MTY3OTA5NDU4OX0.Ujnle41SfRkP60AOPFdhTQbD-di8Q0GGV2hfC5a4LYU",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n     \"fiche_user\":{\r\n    \r\n        \"userId\": \"39\"\r\n        \r\n}\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:4000/api/fiche_user/19",
+					"raw": "http://localhost:4000/api/fiche_user/?userId=39",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -192,7 +170,56 @@
 					"path": [
 						"api",
 						"fiche_user",
-						"19"
+						""
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "39"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creation_fiche_user_readone",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJpYXQiOjE2NzkwNTIxNjQsImV4cCI6MTY3OTA5NTM2NH0.HXEk9rRcq4Ofw_4EOL6PNCZpw2VjPCGn9dCpFRfmHoU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/fiche_user/fiche/?userId=37",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fiche_user",
+						"fiche",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "37",
+							"disabled": true
+						},
+						{
+							"key": "userId",
+							"value": "37"
+						}
 					]
 				}
 			},
@@ -223,7 +250,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/api/fiche_user/19?userId=39",
+					"raw": "http://localhost:4000/api/fiche_user/21?userId=39",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -232,7 +259,7 @@
 					"path": [
 						"api",
 						"fiche_user",
-						"19"
+						"21"
 					],
 					"query": [
 						{
@@ -261,7 +288,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": " {\r\n     \"fiche_user\":{\r\n        \"userId\": \"39\",\r\n        \"nom\": \"test9\",\r\n        \"couverts\": 5,\r\n        \"fruitsCoques\": 0,\r\n        \"arachide\": 1,\r\n        \"oeuf\": 0,\r\n        \"lait\": 1,\r\n        \"autre\": null\r\n  }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -269,7 +296,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/api/fiche_user/19?userId=39",
+					"raw": "http://localhost:4000/api/fiche_user/22?userId=39",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -278,7 +305,7 @@
 					"path": [
 						"api",
 						"fiche_user",
-						"19"
+						"22"
 					],
 					"query": [
 						{
