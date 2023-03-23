@@ -272,6 +272,46 @@
 			"response": []
 		},
 		{
+			"name": "hours",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU2LCJpYXQiOjE2Nzk1NzY4MjEsImV4cCI6MTY3OTYyMDAyMX0.Krm8dq8bunthrJIij1Z8cnq56SHeYjJDIJJDonKcwmw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"day\": \"Monday\",\r\n    \"lunchStart\": \"12:15:00\",\r\n    \"lunchEnd\": \"14:00:00\",\r\n    \"dinnerStart\": \"19:00:00\",\r\n    \"dinnerEnd\": \"23:45:00\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/admin/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete",
 			"request": {
 				"auth": {
