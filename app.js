@@ -11,6 +11,7 @@ const mysql = require("./db/db.mysql");
 const userRoutes = require("./routes/user");
 const ficheUserRoutes = require("./routes/ficheUser");
 const bookingRoutes = require("./routes/booking");
+const hoursRoutes = require("./routes/hours");
 
 // Creer app express
 const app = express();
@@ -43,6 +44,9 @@ app.use("/api/fiche_user", ficheUserRoutes);
 
 // Route booking
 app.use("/api/booking", bookingRoutes);
+
+// Route hours
+app.use("/api/admin", hoursRoutes);
 
 // Route generale
 

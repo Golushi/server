@@ -98,9 +98,6 @@ exports.readOneFicheUser = async (req, res) => {
 };
 
 exports.updateOneFicheUser = async (req, res) => {
-  // console.log("----------------> Route PUT");
-  // console.log(req.params.id);
-
   // Chercher objet dans table ficheUser
   try {
     const id = req.params.id;
@@ -119,21 +116,9 @@ exports.updateOneFicheUser = async (req, res) => {
 
           // controle autorisation modif par userId
           userIdParamsUrl = req.originalUrl.split("=")[1];
-          // console.log("---------> fiche_user_userId");
-          // console.log(userIdParamsUrl);
-          // console.log(results[0].fiche_user_userId);
 
           if (userIdParamsUrl == results[0].fiche_user_userId) {
             console.log("ça marche");
-
-            // console.log("-------------->reqbody");
-            // console.log(req.body);
-
-            // console.log("-------------->reqbody.ficheUser");
-            // console.log(req.body.fiche_user);
-
-            // Requete SQL :
-            //UPDATE `fiche_user` SET `fiche_user_nom`='test9',`fiche_user_couverts`='3',`fiche_user_fruitsCoques`='0',`fiche_user_arachide`='1',`fiche_user_oeuf`='1',`fiche_user_lait`='1',`fiche_user_autre`= null WHERE `id_fiche_user`= 19
 
             const {
               userId,
@@ -180,10 +165,6 @@ exports.updateOneFicheUser = async (req, res) => {
               autre,
               id,
             ];
-            // console.log(
-            //   "vvvvvvvvvvvvvvaaaaaaaaaaaaaaaaaaaaaalllllllllllllllllluuuuuuuuuuueeeeeeeesssssssss"
-            // );
-            // console.log(values);
 
             mysqlconnection.query(querySql, values, (error, results) => {
               if (error) {
