@@ -14,7 +14,7 @@ console.log(mysql);
 //   password: "tmY3bAWpW86W_O>1",
 // });
 
-const urlDB = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE}`;
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
 const mysqlconnection = mysql.createConnection(urlDB);
 
 // PORT=7027
