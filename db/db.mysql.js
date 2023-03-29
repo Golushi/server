@@ -33,13 +33,13 @@ const mysqlconnection = mysql.createConnection(urlDB);
 // });
 
 // Connecion bdd
-// mysqlconnection.connect((err) => {
-//   if (err) {
-//     console.log(`error connecting: ${err.stack}`);
-//   } else {
-//     console.log("connecté a la bdd quai_antique");
-//     console.log(`connected as id ${mysqlconnection.threadId}`);
-//   }
-// });
+mysqlconnection.connect((err) => {
+  if (err) {
+    console.log(`error connecting: ${err.stack}`);
+  } else {
+    console.log("connecté a la bdd quai_antique");
+    console.log(`connected as id ${mysqlconnection.threadId}`);
+  }
+});
 
 module.exports = mysqlconnection;
