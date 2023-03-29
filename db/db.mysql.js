@@ -1,6 +1,5 @@
 // Import package variables env
 const dotenv = require("dotenv");
-const { createConnection } = require("mysql2");
 dotenv.config();
 
 // Import mysql
@@ -12,6 +11,35 @@ const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${p
 // Connection à la base de données
 const connection = mysql.createConnection(urlDB);
 
-console.log(createConnection);
+// PORT=7027
+// DB_HOST=containers-us-west-113.railway.app
+// DB_USER=root
+// DB_PASSWORD=jKTJaBTY5nE6O9hxU6N4
+// DB_DATABASE=railway
+// DB_NAME=quai_antique
+
+// const mysqlconnection = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   database: process.env.DB_DATABASE,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+// });
+
+// const mysqlconnection = mysql.createConnection({
+//   host: "localhost",
+//   database: "quai_antique",
+//   user: "root",
+//   password: "",
+// });
+
+// Connecion bdd
+connection.connect((err) => {
+  if (err) {
+    console.log(`error connecting: ${err.stack}`);
+  } else {
+    console.log("connecté a la bdd quai_antique");
+    console.log(`connected as id ${connection.threadId}`);
+  }
+});
 
 module.exports = connection;
