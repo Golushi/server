@@ -9,7 +9,7 @@ const mysql = require("mysql2/promise");
 const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
 
 // Connection à la base de données
-const mysqlconnection = mysql.createConnection(urlDB);
+const connection = mysql.createConnection(urlDB);
 
 // PORT=7027
 // DB_HOST=containers-us-west-113.railway.app
@@ -42,4 +42,4 @@ const mysqlconnection = mysql.createConnection(urlDB);
 //   }
 // });
 
-module.exports = mysqlconnection;
+module.exports = connection;

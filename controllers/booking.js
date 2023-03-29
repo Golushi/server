@@ -3,7 +3,7 @@
 const booking = require("../models/Booking");
 
 // Import connection mysql
-const mysqlconnection = require("../db/db.mysql");
+const connection = require("../db/db.mysql");
 
 exports.bookingController = async (req, res) => {
   console.log(req.body);
@@ -52,7 +52,7 @@ exports.bookingController = async (req, res) => {
       lait,
       autre,
     ];
-    const bookingNew = await mysqlconnection.query(
+    const bookingNew = await connection.query(
       querySql,
       [values],
       (error, results) => {

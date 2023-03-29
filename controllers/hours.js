@@ -2,14 +2,14 @@
 const opening_hours = require("../models/Hours");
 
 // Import connection mysql
-const mysqlconnection = require("../db/db.mysql");
+const connection = require("../db/db.mysql");
 
 exports.openingHoursControllerGet = async (req, res) => {
   try {
     const dayOfWeek = req.originalUrl.split("=")[1];
 
     const sql = "SELECT * FROM opening_hours WHERE day = ?";
-    await mysqlconnection.query(sql, dayOfWeek, (error, results) => {
+    await connection.query(sql, dayOfWeek, (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -45,7 +45,7 @@ exports.openingHoursController = async (req, res) => {
 
     console.log("__________________values");
 
-    mysqlconnection.query(querySql, values, (error, results) => {
+    connection.query(querySql, values, (error, results) => {
       if (error) {
         console.log(error);
         return res.status(500).json({ error: "Opening hours not found." });

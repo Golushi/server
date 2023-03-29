@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 const result = dotenv.config();
 
 // Import connection mysql
-const mysqlconnection = require("../db/db.mysql");
+const connection = require("../db/db.mysql");
 
 // Import models bdd user
 const User = require("../models/User");
@@ -40,7 +40,7 @@ exports.signup = (req, res) => {
         couverts: couverts,
       };
       // Requete SQL
-      mysqlconnection.query("INSERT INTO user SET ?", data, (error) => {
+      connection.query("INSERT INTO user SET ?", data, (error) => {
         if (error) {
           res.json({ error });
         } else {
@@ -59,7 +59,7 @@ exports.login = (req, res) => {
   // Chiffrer l'email
   const emailChiffre = user.emailChiffrement();
   // Chercher dans la bdd
-  mysqlconnection.query(
+  connection.query(
     "SELECT * FROM user WHERE email = ?",
     emailChiffre,
     (error, results) => {

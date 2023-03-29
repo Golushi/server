@@ -4,7 +4,7 @@ console.log("--------> FicheUser");
 console.log(fiche_user);
 
 // Import connection mysql
-const mysqlconnection = require("../db/db.mysql");
+const connection = require("../db/db.mysql");
 
 exports.createFicheUser = async (req, res) => {
   // console.log(req.body);
@@ -44,7 +44,7 @@ exports.createFicheUser = async (req, res) => {
       lait,
       autre,
     ];
-    const ficheUser = await mysqlconnection.query(
+    const ficheUser = await connection.query(
       querySql,
       [values],
       (error, results) => {
@@ -62,7 +62,7 @@ exports.createFicheUser = async (req, res) => {
 
 exports.readAllFicheUser = async (req, res) => {
   try {
-    mysqlconnection.query(
+    connection.query(
       "SELECT * FROM `fiche_user` WHERE ?",
       ["1"],
       (error, results) => {
@@ -85,7 +85,7 @@ exports.readOneFicheUser = async (req, res) => {
     const id = req.originalUrl.split("=")[1];
     const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
 
-    mysqlconnection.query(querySql, [id], (error, results) => {
+    connection.query(querySql, [id], (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -104,7 +104,7 @@ exports.updateOneFicheUser = async (req, res) => {
     // SELECT * FROM `fiche_user` WHERE `id_fiche_user` = 19
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    const ficheUser = await mysqlconnection.query(
+    const ficheUser = await connection.query(
       querySql,
       [id],
       (error, results) => {
@@ -166,7 +166,7 @@ exports.updateOneFicheUser = async (req, res) => {
               id,
             ];
 
-            mysqlconnection.query(querySql, values, (error, results) => {
+            connection.query(querySql, values, (error, results) => {
               if (error) {
                 res.status(500).json({ error });
               } else {
@@ -196,7 +196,7 @@ exports.deleteOneFicheUser = async (req, res) => {
 
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    await mysqlconnection.query(querySql, [id], (error, results) => {
+    await connection.query(querySql, [id], (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -232,7 +232,7 @@ exports.deleteOneFicheUser = async (req, res) => {
 
           // Connexion bdd
 
-          mysqlconnection.query(querySql, values, (error, results) => {
+          connection.query(querySql, values, (error, results) => {
             if (error) {
               res.status(500).json({ error });
             } else {
