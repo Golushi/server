@@ -14,8 +14,16 @@ console.log(mysql);
 //   password: "tmY3bAWpW86W_O>1",
 // });
 
-const urlsDB = `mysql://root:jKTJaBTY5nE6O9hxU6N4@containers-us-west-113.railway.app:7027/railway`;
-const mysqlconnection = mysql.createConnection(urlsDB);
+const urlDB = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE}`;
+const mysqlconnection = mysql.createConnection(urlDB);
+
+// PORT=7027
+// DB_HOST=containers-us-west-113.railway.app
+// DB_USER=root
+// DB_PASSWORD=jKTJaBTY5nE6O9hxU6N4
+// DB_DATABASE=railway
+// DB_NAME=quai_antique
+
 // const mysqlconnection = mysql.createConnection({
 //   host: process.env.DB_HOST,
 //   database: process.env.DB_DATABASE,
