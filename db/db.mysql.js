@@ -3,8 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Import mysql
-const mysql = require("mysql");
-console.log(mysql);
+const mysql = require("mysql2");
 
 // Param connexion bdd
 // const mysqlconnection = mysql.createConnection({
