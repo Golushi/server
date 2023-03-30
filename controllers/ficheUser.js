@@ -102,10 +102,9 @@ exports.updateOneFicheUser = async (req, res) => {
     // SELECT * FROM `fiche_user` WHERE `id_fiche_user` = 19
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    const ficheUser = await connection.query(
-      querySql,
-      [id],
-      (error, results) => {
+    const ficheUser = await connection
+      .promise()
+      .query(querySql, [id], (error, results) => {
         if (error) {
           res.json({ error });
         } else {
@@ -178,8 +177,7 @@ exports.updateOneFicheUser = async (req, res) => {
             });
           }
         }
-      }
-    );
+      });
   } catch (error) {
     res.status(500).json({ error });
   }
