@@ -44,15 +44,17 @@ exports.createFicheUser = async (req, res) => {
       lait,
       autre,
     ];
-    const ficheUser = await connection
-      .promise()
-      .query(querySql, [values], (error, results) => {
+    const ficheUser = await connection.query(
+      querySql,
+      [values],
+      (error, results) => {
         if (error) {
           res.json({ error });
         } else {
           res.status(200).json({ results });
         }
-      });
+      }
+    );
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -60,15 +62,17 @@ exports.createFicheUser = async (req, res) => {
 
 exports.readAllFicheUser = async (req, res) => {
   try {
-    connection
-      .promise()
-      .query("SELECT * FROM `fiche_user` WHERE ?", ["1"], (error, results) => {
+    connection.query(
+      "SELECT * FROM `fiche_user` WHERE ?",
+      ["1"],
+      (error, results) => {
         if (error) {
           res.json({ error });
         } else {
           res.status(200).json({ results });
         }
-      });
+      }
+    );
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -81,7 +85,7 @@ exports.readOneFicheUser = async (req, res) => {
     const id = req.originalUrl.split("=")[1];
     const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
 
-    connection.promise().query(querySql, [id], (error, results) => {
+    connection.query(querySql, [id], (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -100,9 +104,10 @@ exports.updateOneFicheUser = async (req, res) => {
     // SELECT * FROM `fiche_user` WHERE `id_fiche_user` = 19
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    const ficheUser = await connection
-      .promise()
-      .query(querySql, [id], (error, results) => {
+    const ficheUser = await connection.query(
+      querySql,
+      [id],
+      (error, results) => {
         if (error) {
           res.json({ error });
         } else {
@@ -161,7 +166,7 @@ exports.updateOneFicheUser = async (req, res) => {
               id,
             ];
 
-            connection.promise().query(querySql, values, (error, results) => {
+            connection.query(querySql, values, (error, results) => {
               if (error) {
                 res.status(500).json({ error });
               } else {
@@ -175,7 +180,8 @@ exports.updateOneFicheUser = async (req, res) => {
             });
           }
         }
-      });
+      }
+    );
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -190,7 +196,7 @@ exports.deleteOneFicheUser = async (req, res) => {
 
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    await connection.promise().query(querySql, [id], (error, results) => {
+    await connection.query(querySql, [id], (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -226,7 +232,7 @@ exports.deleteOneFicheUser = async (req, res) => {
 
           // Connexion bdd
 
-          connection.promise().query(querySql, values, (error, results) => {
+          connection.query(querySql, values, (error, results) => {
             if (error) {
               res.status(500).json({ error });
             } else {
