@@ -40,7 +40,7 @@ exports.signup = (req, res) => {
         couverts: couverts,
       };
       // Requete SQL
-      connection.promise().query("INSERT INTO user SET ?", data, (error) => {
+      connection.query("INSERT INTO user SET ?", data, (error) => {
         if (error) {
           res.json({ error });
         } else {
