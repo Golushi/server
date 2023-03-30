@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Import mysql
-const mysql = require("mysql2/promise");
+const mysql = require("mysql2");
 
 // Param connexion bdd
 const urlDB = `mysql://root:jKTJaBTY5nE6O9hxU6N4@containers-us-west-113.railway.app:7027/railway`;
