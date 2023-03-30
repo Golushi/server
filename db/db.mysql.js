@@ -6,19 +6,18 @@ dotenv.config();
 const mysql = require("mysql2/promise");
 
 // Param connexion bdd
-const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
+const urlDB = `mysql://root:jKTJaBTY5nE6O9hxU6N4@containers-us-west-113.railway.app:7027/railway`;
 
 // Connection à la base de données
 const connection = mysql.createConnection(urlDB);
 
 // Connecion bdd
-// connection.connect((err) => {
-//   if (err) {
-//     console.log(`error connecting: ${err.stack}`);
-//   } else {
-//     console.log("connecté a la bdd quai_antique");
-//     console.log(`connected as id ${connection.threadId}`);
-//   }
-// });
+connection.connect((error) => {
+  if (error) {
+    console.error("Error connecting to database: ", error);
+  } else {
+    console.log("Connected to database!");
+  }
+});
 
 module.exports = connection;
