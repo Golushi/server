@@ -83,7 +83,7 @@ exports.readOneFicheUser = async (req, res) => {
     const id = req.originalUrl.split("=")[1];
     const querySql = "SELECT * FROM `fiche_user` WHERE `fiche_user_userId`= ?";
 
-    connection.promise().query(querySql, [id], (error, results) => {
+    connection.query(querySql, [id], (error, results) => {
       if (error) {
         res.json({ error });
       } else {
