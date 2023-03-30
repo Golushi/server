@@ -40,7 +40,7 @@ exports.signup = (req, res) => {
         couverts: couverts,
       };
       // Requete SQL
-      connection.query("INSERT INTO user SET ?", data, (error) => {
+      connection.promise().query("INSERT INTO user SET ?", data, (error) => {
         if (error) {
           res.json({ error });
         } else {
@@ -59,37 +59,41 @@ exports.login = (req, res) => {
   // Chiffrer l'email
   const emailChiffre = user.emailChiffrement();
   // Chercher dans la bdd
-  connection.query(
-    "SELECT * FROM user WHERE email = ?",
-    emailChiffre,
-    (error, results) => {
-      if (error) {
-        res.json({ error });
-      } else {
-        if (results == 0) {
-          return res.status(404).json({ error: "utilisateur inexistant" });
+  connection
+    .promise()
+    .query(
+      "SELECT * FROM user WHERE email = ?",
+      emailChiffre,
+      (error, results) => {
+        if (error) {
+          res.json({ error });
+        } else {
+          if (results == 0) {
+            return res.status(404).json({ error: "utilisateur inexistant" });
+          }
+          // Validité password
+          bcrypt
+            .compare(req.body.password, results[0].password)
+            .then((controlPassword) => {
+              if (!controlPassword) {
+                return res
+                  .status(401)
+                  .json({ error: "mot de passe incorrect" });
+              }
+              // Generer Token
+              const token = jwt.sign(
+                { userId: results[0].id },
+                `${process.env.JWT_KEY_TOKEN}`,
+                { expiresIn: "12h" }
+              );
+              // Res server userId et token
+              res.status(201).json({
+                userId: results[0].id,
+                token,
+              });
+            })
+            .catch((error) => res.status(500).json({ error }));
         }
-        // Validité password
-        bcrypt
-          .compare(req.body.password, results[0].password)
-          .then((controlPassword) => {
-            if (!controlPassword) {
-              return res.status(401).json({ error: "mot de passe incorrect" });
-            }
-            // Generer Token
-            const token = jwt.sign(
-              { userId: results[0].id },
-              `${process.env.JWT_KEY_TOKEN}`,
-              { expiresIn: "12h" }
-            );
-            // Res server userId et token
-            res.status(201).json({
-              userId: results[0].id,
-              token,
-            });
-          })
-          .catch((error) => res.status(500).json({ error }));
       }
-    }
-  );
+    );
 };

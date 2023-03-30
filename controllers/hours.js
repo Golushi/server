@@ -9,7 +9,7 @@ exports.openingHoursControllerGet = async (req, res) => {
     const dayOfWeek = req.originalUrl.split("=")[1];
 
     const sql = "SELECT * FROM opening_hours WHERE day = ?";
-    await connection.query(sql, dayOfWeek, (error, results) => {
+    await connection.promise().query(sql, dayOfWeek, (error, results) => {
       if (error) {
         res.json({ error });
       } else {
@@ -45,7 +45,7 @@ exports.openingHoursController = async (req, res) => {
 
     console.log("__________________values");
 
-    connection.query(querySql, values, (error, results) => {
+    connection.promise().query(querySql, values, (error, results) => {
       if (error) {
         console.log(error);
         return res.status(500).json({ error: "Opening hours not found." });
