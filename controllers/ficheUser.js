@@ -44,17 +44,15 @@ exports.createFicheUser = async (req, res) => {
       lait,
       autre,
     ];
-    const ficheUser = await connection.query(
-      querySql,
-      [values],
-      (error, results) => {
+    const ficheUser = await connection
+      .promise()
+      .query(querySql, [values], (error, results) => {
         if (error) {
           res.json({ error });
         } else {
           res.status(200).json({ results });
         }
-      }
-    );
+      });
   } catch (err) {
     res.status(500).json({ error: err });
   }
