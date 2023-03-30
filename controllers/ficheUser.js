@@ -88,7 +88,6 @@ exports.readOneFicheUser = async (req, res) => {
         res.json({ error });
       } else {
         res.status(200).json({ results });
-        console.log("je suis ici");
       }
     });
   } catch (error) {
