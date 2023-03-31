@@ -52,7 +52,7 @@ exports.bookingController = async (req, res) => {
       lait,
       autre,
     ];
-    const bookingNew = await connection
+    const bookingNew = connection
       .promise()
       .query(querySql, [values], (error, results) => {
         if (error) {
