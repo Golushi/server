@@ -96,88 +96,65 @@ exports.readOneFicheUser = async (req, res) => {
 };
 
 exports.updateOneFicheUser = async (req, res) => {
-  // Chercher objet dans table ficheUser
   try {
     const id = req.params.id;
-    // SELECT * FROM `fiche_user` WHERE `id_fiche_user` = 19
     const querySql = "SELECT * FROM fiche_user WHERE id_fiche_user = ?";
 
-    const ficheUser = await connection
-      .promise()
-      .query(querySql, [id], (error, results) => {
-        if (error) {
-          res.json({ error });
-        } else {
-          console.log("--------------------> Selection objet a modif");
-          console.log(results);
+    // Utilisation de await pour attendre la fin de la requête et récupérer les résultats
+    const [results] = await connection.promise().query(querySql, [id]);
 
-          // controle autorisation modif par userId
-          userIdParamsUrl = req.originalUrl.split("=")[1];
+    console.log("--------------------> Selection objet a modif");
+    console.log(results);
 
-          if (userIdParamsUrl == results[0].fiche_user_userId) {
-            console.log("ça marche");
+    // Contrôle autorisation modif par userId
+    const userIdParamsUrl = req.originalUrl.split("=")[1];
+    if (userIdParamsUrl == results[0].fiche_user_userId) {
+      console.log("ça marche");
 
-            const {
-              userId,
-              nom,
-              couverts,
-              fruitsCoques,
-              arachide,
-              oeuf,
-              lait,
-              autre,
-            } = req.body;
-            // } = req.body.fiche_user;
-            console.log("***************************");
-            console.log(
-              userId,
-              nom,
-              couverts,
-              fruitsCoques,
-              arachide,
-              oeuf,
-              lait,
-              autre
-            );
+      const {
+        userId,
+        nom,
+        couverts,
+        fruitsCoques,
+        arachide,
+        oeuf,
+        lait,
+        autre,
+      } = req.body;
 
-            const querySql = `
-          UPDATE fiche_user SET
-          fiche_user_nom = ?,
-          fiche_user_couverts = ?,
-          fiche_user_fruitsCoques = ?,
-          fiche_user_arachide = ?,
-          fiche_user_oeuf = ?,
-          fiche_user_lait = ?,
-          fiche_user_autre = ?
-          WHERE id_fiche_user = ?
-          `;
+      const updateSql = `
+        UPDATE fiche_user SET
+        fiche_user_nom = ?,
+        fiche_user_couverts = ?,
+        fiche_user_fruitsCoques = ?,
+        fiche_user_arachide = ?,
+        fiche_user_oeuf = ?,
+        fiche_user_lait = ?,
+        fiche_user_autre = ?
+        WHERE id_fiche_user = ?
+      `;
 
-            const values = [
-              nom,
-              couverts,
-              fruitsCoques,
-              arachide,
-              oeuf,
-              lait,
-              autre,
-              id,
-            ];
+      const values = [
+        nom,
+        couverts,
+        fruitsCoques,
+        arachide,
+        oeuf,
+        lait,
+        autre,
+        id,
+      ];
 
-            connection.query(querySql, values, (error, results) => {
-              if (error) {
-                res.status(500).json({ error });
-              } else {
-                res.status(201).json({ message: "mise a jour OK", results });
-              }
-            });
-          } else {
-            console.log("userId non autorisé à faire la modif");
-            res.status(403).json({
-              message: " Vous n'etes pas autoriser à modifier les données",
-            });
-          }
-        }
+      const [updateResults] = await connection
+        .promise()
+        .query(updateSql, values);
+      res.status(201).json({ message: "mise a jour OK", updateResults });
+    } else {
+      console.log("userId non autorisé à faire la modif");
+      res.status(403).json({
+        message: " Vous n'êtes pas autorisé à modifier les données",
       });
+    }
   } catch (error) {
     res.status(500).json({ error });
   }
