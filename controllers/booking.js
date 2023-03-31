@@ -57,8 +57,10 @@ exports.bookingController = async (req, res) => {
       .query(querySql, [values], (error, results) => {
         if (error) {
           res.json({ error });
+          console.log("je suis la");
         } else {
           res.status(200).json({ results });
+          console.log("je suis ici");
         }
       });
   } catch (err) {
