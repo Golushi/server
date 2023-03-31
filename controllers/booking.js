@@ -24,21 +24,9 @@ exports.bookingController = async (req, res) => {
     autre,
   } = useBooking;
 
-  const bookingNew = new booking(
-    nom,
-    couverts,
-    dateReservation,
-    heureReservation,
-    fruitsCoques,
-    arachide,
-    oeuf,
-    lait,
-    autre
-  );
-
   try {
     const querySql = `INSERT INTO booking( nom, couverts, dateReservation, heureReservation, fruitsCoques, arachide, oeuf, lait, autre)
-    VALUES (?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     //('jean', '1','2023-03-22','12:15','0','1','0','0', NULL);
     const values = [
@@ -52,14 +40,14 @@ exports.bookingController = async (req, res) => {
       lait,
       autre,
     ];
-    const bookingNew = connection
+    connection
       .promise()
-      .query(querySql, [values], (error, results) => {
-        if (error) {
-          res.json({ error });
-        } else {
-          res.status(200).json({ results });
-        }
+      .query(querySql, values)
+      .then((results) => {
+        res.status(200).json({ results });
+      })
+      .catch((error) => {
+        res.json({ error });
       });
   } catch (err) {
     res.status(500).json({ error: err });
