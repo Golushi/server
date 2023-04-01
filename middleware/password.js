@@ -14,7 +14,7 @@ passwordSchema
   .has()
   .lowercase() // Must have lowercase letters
   .has()
-  .digits(2) // Must have at least 2 digits
+  .digits() // Must have at least 1 digits
   .has()
   .not()
   .spaces() // Should not have spaces
