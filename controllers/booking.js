@@ -1,4 +1,3 @@
-//"INSERT INTO `booking`( `nom`, `couverts`, `dateReservation`, `heureReservation`, `fruitsCoques`, `arachide`, `oeuf`, `lait`, `autre`) VALUES ('admin', '1','2023-03-22','12:15','0','1','0','0', NULL)";
 // Import model
 const booking = require("../models/Booking");
 
