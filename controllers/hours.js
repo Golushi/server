@@ -20,23 +20,23 @@ exports.openingHoursControllerGet = async (req, res) => {
   }
 };
 
-// exports.openingHoursControllerGetAll = async (req, res) => {
-//   try {
-//     connection.query(
-//       "SELECT * FROM `opening_hours` WHERE day ",
+exports.openingHoursControllerGetAll = async (req, res) => {
+  try {
+    connection.query(
+      "SELECT * FROM `opening_hours` WHERE day ",
 
-//       (error, results) => {
-//         if (error) {
-//           res.json({ error });
-//         } else {
-//           res.status(200).json({ results });
-//         }
-//       }
-//     );
-//   } catch (err) {
-//     res.status(500).json({ error: err });
-//   }
-// };
+      (error, results) => {
+        if (error) {
+          res.json({ error });
+        } else {
+          res.status(200).json({ results });
+        }
+      }
+    );
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
 
 exports.openingHoursController = async (req, res) => {
   try {
