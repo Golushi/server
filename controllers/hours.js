@@ -9,16 +9,14 @@ exports.openingHoursControllerGet = async (req, res) => {
     const dayOfWeek = req.originalUrl.split("=")[1];
 
     const sql = "SELECT * FROM opening_hours WHERE day = ?";
-    await connection.promise().query(sql, dayOfWeek, (error, results) => {
-      if (error) {
-        res.json({ error });
-      } else {
-        console.log("--------------------> Selection objet a modif");
-        res.status(200).json({ results });
-      }
-    });
-  } catch (err) {
-    res.status(500).json({ error: err });
+    const [rows] = await connection.promise().execute(sql, [dayOfWeek]);
+
+    res.status(200).json({ results: rows });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while retrieving opening hours." });
   }
 };
 
