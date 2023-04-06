@@ -17,7 +17,7 @@ const router = express.Router();
 
 // Route Visiteur
 router.post("/", bookingController);
-router.get("/booking-admin", bookingAdminGet);
+router.get("/admin/booking", bookingAdminGet);
 
 // // Route user
 // router.post("/booking", auth, bookingController);
