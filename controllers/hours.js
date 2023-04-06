@@ -6,7 +6,7 @@ const connection = require("../db/db.mysql");
 
 exports.openingHoursControllerGet = async (req, res) => {
   try {
-    const dayOfWeek = req.originalUrl.split("=")[1];
+    const dayOfWeek = req.query.day; // récupère le paramètre "day" de l'URL
 
     const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
     const [rows] = await connection.promise().execute(sql, [dayOfWeek]);
@@ -20,22 +20,38 @@ exports.openingHoursControllerGet = async (req, res) => {
   }
 };
 
-exports.openingHoursControllerGetAll = async (req, res) => {
-  try {
-    connection.query(
-      "SELECT * FROM `opening_hours` WHERE ?",
-      (error, results) => {
-        if (error) {
-          res.json({ error });
-        } else {
-          res.status(200).json({ results });
-        }
-      }
-    );
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-};
+// exports.openingHoursControllerGet = async (req, res) => {
+//   try {
+//     const dayOfWeek = req.originalUrl.split("=")[1];
+
+//     const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
+//     const [rows] = await connection.promise().execute(sql, [dayOfWeek]);
+
+//     res.status(200).json({ results: rows });
+//   } catch (error) {
+//     console.error(error);
+//     res
+//       .status(500)
+//       .json({ error: "An error occurred while retrieving opening hours." });
+//   }
+// };
+
+// exports.openingHoursControllerGetAll = async (req, res) => {
+//   try {
+//     connection.query(
+//       "SELECT * FROM `opening_hours` WHERE ?",
+//       (error, results) => {
+//         if (error) {
+//           res.json({ error });
+//         } else {
+//           res.status(200).json({ results });
+//         }
+//       }
+//     );
+//   } catch (err) {
+//     res.status(500).json({ error: err });
+//   }
+// };
 
 exports.openingHoursController = async (req, res) => {
   try {
