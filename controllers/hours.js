@@ -45,7 +45,7 @@ exports.openingHoursController = async (req, res) => {
 
     console.log("__________________values");
 
-    connection.promise().query(querySql, values, (error, results) => {
+    connection.query(querySql, values, (error, results) => {
       if (error) {
         console.log(error);
         return res.status(500).json({ error: "Opening hours not found." });
