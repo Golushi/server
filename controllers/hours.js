@@ -9,7 +9,7 @@ exports.openingHoursControllerGet = async (req, res) => {
     const dayOfWeek = req.query.day; // récupère le paramètre "day" de l'URL
 
     const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
-    const [rows] = await connection.promise().query(sql, [dayOfWeek]);
+    const [rows] = await connection.query(sql, [dayOfWeek]);
 
     res.status(200).json({ results: rows });
   } catch (error) {
