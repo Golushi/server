@@ -2,7 +2,10 @@
 const express = require("express");
 
 // Import controllers booking
-const { bookingController } = require("../controllers/booking");
+const {
+  bookingController,
+  bookingAdminGet,
+} = require("../controllers/booking");
 
 // Import middleware auth
 //const auth = require("../middleware/authentification");
@@ -14,6 +17,7 @@ const router = express.Router();
 
 // Route Visiteur
 router.post("/", bookingController);
+router.post("/admin/booking", bookingAdminGet);
 
 // // Route user
 // router.post("/booking", auth, bookingController);
