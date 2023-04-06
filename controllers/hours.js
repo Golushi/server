@@ -4,12 +4,12 @@ const opening_hours = require("../models/Hours");
 // Import connection mysql
 const connection = require("../db/db.mysql");
 
-exports.openingHoursControllerGet = async (req, res) => {
+exports.openingHoursControllerGet = (req, res) => {
   try {
     const dayOfWeek = req.query.day; // récupère le paramètre "day" de l'URL
 
     const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
-    const [rows] = await connection.query(sql, [dayOfWeek]);
+    const [rows] = connection.query(sql, [dayOfWeek]);
 
     res.status(200).json({ results: rows });
   } catch (error) {
