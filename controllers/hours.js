@@ -8,7 +8,7 @@ exports.openingHoursControllerGet = async (req, res) => {
   try {
     const dayOfWeek = req.originalUrl.split("=")[1];
 
-    const sql = "SELECT * FROM opening_hours WHERE day = ?";
+    const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
     const [rows] = await connection.promise().execute(sql, [dayOfWeek]);
 
     res.status(200).json({ results: rows });
@@ -17,6 +17,24 @@ exports.openingHoursControllerGet = async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while retrieving opening hours." });
+  }
+};
+
+exports.openingHoursControllerGetAll = async (req, res) => {
+  try {
+    connection.query(
+      "SELECT * FROM `opening_hours` WHERE ?",
+      ["1"],
+      (error, results) => {
+        if (error) {
+          res.json({ error });
+        } else {
+          res.status(200).json({ results });
+        }
+      }
+    );
+  } catch (err) {
+    res.status(500).json({ error: err });
   }
 };
 
