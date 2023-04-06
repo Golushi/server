@@ -6,7 +6,7 @@ const connection = require("../db/db.mysql");
 
 exports.bookingAdminGet = async (req, res) => {
   try {
-    connection.query("SELECT * FROM `booking` ", (error, results) => {
+    connection.promise().query("SELECT * FROM `booking` ", (error, results) => {
       if (error) {
         res.json({ error });
       } else {
