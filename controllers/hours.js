@@ -24,7 +24,6 @@ exports.openingHoursControllerGetAll = async (req, res) => {
   try {
     connection.query(
       "SELECT * FROM `opening_hours` WHERE ?",
-      ["1"],
       (error, results) => {
         if (error) {
           res.json({ error });
