@@ -23,7 +23,7 @@ exports.openingHoursControllerGet = async (req, res) => {
 exports.openingHoursControllerGetAll = async (req, res) => {
   try {
     connection.query(
-      "SELECT * FROM `opening_hours` WHERE day ",
+      "SELECT * FROM `opening_hours` ",
 
       (error, results) => {
         if (error) {

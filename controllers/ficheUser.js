@@ -1,7 +1,5 @@
 // Import models
 const fiche_user = require("../models/FicheUser");
-console.log("--------> FicheUser");
-console.log(fiche_user);
 
 // Import connection mysql
 const connection = require("../db/db.mysql");
