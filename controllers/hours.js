@@ -6,7 +6,7 @@ const connection = require("../db/db.mysql");
 
 exports.openingHoursControllerGet = (req, res) => {
   try {
-    const dayOfWeek = req.query.day; // récupère le paramètre "day" de l'URL
+    const dayOfWeek = req.promise().query.day; // récupère le paramètre "day" de l'URL
 
     const sql = "SELECT * FROM `opening_hours` WHERE day = ?";
     const [rows] = connection.query(sql, [dayOfWeek]);
