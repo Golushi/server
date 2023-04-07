@@ -5,6 +5,7 @@ const booking = require("../models/Booking");
 const connection = require("../db/db.mysql");
 
 exports.bookingAdminGet = async (req, res) => {
+  console.log("je suis la");
   try {
     await connection
       .promise()
