@@ -7,15 +7,13 @@ const connection = require("../db/db.mysql");
 exports.bookingAdminGet = async (req, res) => {
   console.log("je suis la");
   try {
-    await connection
-      .promise()
-      .query("SELECT * FROM booking ", (error, results) => {
-        if (error) {
-          res.json({ error });
-        } else {
-          res.status(200).json({ results });
-        }
-      });
+    connection.promise().query("SELECT * FROM booking ", (error, results) => {
+      if (error) {
+        res.json({ error });
+      } else {
+        res.status(200).json({ results });
+      }
+    });
   } catch (err) {
     res.status(500).json({ error: err });
   }
