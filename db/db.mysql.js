@@ -6,7 +6,7 @@ dotenv.config();
 const mysql = require("mysql2");
 
 // Param connexion bdd
-const urlDB = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE}`;
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
 
 // Connection à la base de données
 const connection = mysql.createConnection(urlDB);
