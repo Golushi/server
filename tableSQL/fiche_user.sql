@@ -8,7 +8,7 @@ CREATE TABLE `fiche_user` (
   `fiche_user_oeuf` tinyint(1) NOT NULL,
   `fiche_user_lait` tinyint(1) NOT NULL,
   `fiche_user_autre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 ALTER TABLE `fiche_user`
   ADD PRIMARY KEY (`id_fiche_user`),

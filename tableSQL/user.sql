@@ -5,7 +5,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `couverts` int(11) NOT NULL CHECK (`couverts` >= 1 and `couverts` <= 20),
   `timestamp` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='nouvelle table user';
+);
 
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
